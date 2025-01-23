@@ -1,7 +1,6 @@
 import { MosaicMakerProvider } from "./Mosaic-context";
 import { MosaicDisplay } from "./Mosaic-display";
 import { Controls } from "./controls/Controls";
-import "@jpotin/playground-ui/dist/assets/playground-ui.css";
 
 function MosaicMaker() {
   return (

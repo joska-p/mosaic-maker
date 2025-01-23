@@ -8,8 +8,8 @@ importers:
   .:
     dependencies:
       "@jpotin/playground-ui":
-        specifier: ^0.0.4
-        version: 0.0.4(class-variance-authority@0.7.1)(clsx@2.1.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(tailwind-merge@2.6.0)
+        specifier: ^0.0.9
+        version: 0.0.9(class-variance-authority@0.7.1)(clsx@2.1.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(tailwind-merge@2.6.0)(tailwindcss@3.4.17)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -625,10 +625,10 @@ packages:
       }
     engines: { node: ">=12" }
 
-  "@jpotin/playground-ui@0.0.4":
+  "@jpotin/playground-ui@0.0.9":
     resolution:
       {
-        integrity: sha512-p541CoNivcqVTgJE0ge3UXvxciKYp5xN63uxNFpFTI+0krFL6dI7Afm8Ob7QbRxuKy7+vOuvyQ2cGI3LRswUWA==,
+        integrity: sha512-u7lq2iROG6hgqZBxrOk9gXofz1AQfVnKKwqxyg9mO933I2lpApi3Jw6D8AXFCedO2V2o3UDHSQh6ZY7MWMxfAw==,
       }
     peerDependencies:
       class-variance-authority: ^0.7.1
@@ -636,6 +636,7 @@ packages:
       react: ^19.0.0
       react-dom: ^19.0.0
       tailwind-merge: ^2.6.0
+      tailwindcss: ^3.4.17
 
   "@jridgewell/gen-mapping@0.3.8":
     resolution:
@@ -3643,13 +3644,14 @@ snapshots:
       wrap-ansi: 8.1.0
       wrap-ansi-cjs: wrap-ansi@7.0.0
 
-  "@jpotin/playground-ui@0.0.4(class-variance-authority@0.7.1)(clsx@2.1.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(tailwind-merge@2.6.0)":
+  "@jpotin/playground-ui@0.0.9(class-variance-authority@0.7.1)(clsx@2.1.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(tailwind-merge@2.6.0)(tailwindcss@3.4.17)":
     dependencies:
       class-variance-authority: 0.7.1
       clsx: 2.1.1
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
       tailwind-merge: 2.6.0
+      tailwindcss: 3.4.17
 
   "@jridgewell/gen-mapping@0.3.8":
     dependencies:

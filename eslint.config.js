@@ -13,10 +13,11 @@ export default tseslint.config(
   {
     extends: [
       js.configs.recommended,
-      jsxA11y.flatConfigs.recommended,
       importPlugin.flatConfigs.recommended,
       importPlugin.flatConfigs.typescript,
-      ...tseslint.configs.recommended,
+      ...tseslint.configs.strict,
+      ...tseslint.configs.stylistic,
+      jsxA11y.flatConfigs.recommended,
       eslintConfigPrettier,
     ],
     files: ["**/*.{js,jsx,ts,tsx}"],
@@ -25,6 +26,7 @@ export default tseslint.config(
       globals: globals.browser,
     },
     settings: {
+      react: { version: "detect" },
       "import/resolver": {
         typescript: {
           alwaysTryTypes: true,
