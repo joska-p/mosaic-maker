@@ -7,7 +7,7 @@ import { computeNumberOfTiles, updateElementStyles } from "./lib/style-utils";
 import { getRandom, shuffleArray } from "./lib/utils";
 
 interface MosaicContext {
-  mosaicRef: React.RefObject<HTMLDivElement>;
+  mosaicRef: React.RefObject<HTMLDivElement | null>;
   currentPalettes: Palette[];
   updatePalettes: () => void;
   currentPalette: Palette;

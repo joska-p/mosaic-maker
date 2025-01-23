@@ -1,9 +1,9 @@
 import { z } from "zod";
 import { initialPalette } from "../config";
+import type { Palette } from "../config";
 import { safeFetch } from "./utils";
 
 // Types
-type Palette = typeof initialPalette;
 interface CachedPalettes {
   palettes: Palette[];
   expiration: number;
