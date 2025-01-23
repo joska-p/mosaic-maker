@@ -25,8 +25,8 @@ function TileSetControls() {
               colors={Object.keys(initialPalette) as [string, string, string, string, string]}
               className={cn(
                 "opacity-70 transition-opacity",
-                "peer-checked:ring-primary peer-checked:opacity-100 peer-checked:ring-4",
-                "peer-focus-visible:ring-accent peer-focus-visible:ring-4"
+                "peer-checked:opacity-100 peer-checked:ring-4 peer-checked:ring-primary",
+                "peer-focus-visible:ring-4 peer-focus-visible:ring-accent"
               )}
               rotation="--rotation-0"
             />

@@ -7,7 +7,7 @@ import { computeNumberOfTiles, updateElementStyles } from "./lib/style-utils";
 import { getRandom, shuffleArray } from "./lib/utils";
 
 interface MosaicContext {
-  mosaicRef: React.RefObject<HTMLDivElement | null>;
+  mosaicRef: React.RefObject<HTMLDivElement>;
   currentPalettes: Palette[];
   updatePalettes: () => void;
   currentPalette: Palette;
@@ -21,7 +21,7 @@ interface MosaicContext {
 const MosaicMakerContext = createContext<MosaicContext | null>(null);
 
 function MosaicMakerProvider({ children }: ComponentProps<"div">) {
-  const mosaicRef = useRef<HTMLDivElement | null>(null);
+  const mosaicRef = useRef<HTMLDivElement>(null);
   const [paletteStock, setPaletteStock] = useState<Palette[]>([initialPalette]);
   const [currentPalettes, setCurrentPalettes] = useState<Palette[]>([initialPalette]);
   const [currentPalette, setCurrentPalette] = useState<Palette>(initialPalette);
