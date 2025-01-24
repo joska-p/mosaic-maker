@@ -47,4 +47,6 @@ function Diamond({ colors, rotation, className }: Props) {
   );
 }
 
+Diamond.displayName = "Diamond";
+
 export { Diamond };

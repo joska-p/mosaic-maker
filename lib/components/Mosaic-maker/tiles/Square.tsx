@@ -47,4 +47,6 @@ function Square({ colors, rotation, className }: Props) {
   );
 }
 
+Square.displayName = "Square";
+
 export { Square };

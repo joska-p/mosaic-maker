@@ -34,4 +34,6 @@ function MiddleCircle({ colors, rotation, className }: Props) {
   );
 }
 
+MiddleCircle.displayName = "MiddleCircle";
+
 export { MiddleCircle };

@@ -1,8 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { MosaicMaker } from "./components/Mosaic-maker/Mosaic-maker";
-import "@jpotin/playground-ui/dist/playground-ui.css";
-import "./styles/global.css";
+import { MosaicMaker } from "../lib/components/Mosaic-maker/Mosaic-maker";
 
 const root = document.getElementById("root");
 if (!root) {

@@ -31,4 +31,6 @@ function OppositeCircles({ colors, rotation, className }: Props) {
   );
 }
 
+OppositeCircles.displayName = "OppositeCircles";
+
 export { OppositeCircles };

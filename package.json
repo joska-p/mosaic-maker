@@ -1,11 +1,28 @@
 {
-  "name": "mosaic-maker",
+  "name": "@jpotin/mosaic-maker",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
+  "description": "A React component for creating mosaics",
+  "author": "jpotin@gmail.com",
+  "license": "MIT",
   "type": "module",
-  "homepage": "https://jpotin.github.io/mosaic-maker",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/mosaic-maker.umd.js",
+  "module": "dist/mosaic-maker.js",
+  "exports": {
+    ".": {
+      "import": "./dist/mosaic-maker.js",
+      "require": "./dist/mosaic-maker.umd.js"
+    },
+    "./dist/mosaic-maker.css": "./dist/mosaic-maker.css"
+  },
+  "sideEffect": false,
   "scripts": {
     "dev": "vite",
+    "prebuild": "rm -rf dist",
+    "prepublish": "pnpm run build",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --report-unused-disable-directives",
@@ -15,19 +32,34 @@
     "deploy": "gh-pages -d dist",
     "postdeploy": "echo 'Deployment complete!'"
   },
-  "dependencies": {
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
     "@jpotin/playground-ui": "^0.1.6",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwind-merge": "^2.6.0",
-    "zod": "^3.24.1"
-  },
-  "devDependencies": {
+    "zod": "^3.24.1",
     "@eslint/js": "^9.17.0",
     "@tailwindcss/postcss": "^4.0.0",
     "@tailwindcss/vite": "^4.0.0",
+    "@types/node": "^22.10.10",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "@vitejs/plugin-react": "^4.3.4",
@@ -48,7 +80,8 @@
     "tailwindcss": "^4.0.0",
     "typescript": "~5.7.3",
     "typescript-eslint": "^8.21.0",
-    "vite": "^6.0.11"
+    "vite": "^6.0.11",
+    "vite-plugin-dts": "^4.5.0"
   },
   "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0"
 }

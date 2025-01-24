@@ -17,7 +17,7 @@ function Cube({ colors, rotation, className }: Props) {
       }}
     >
       <div
-        className={"absolute left-0 top-0 border-solid transition-[border-color] duration-500"}
+        className={"absolute top-0 left-0 border-solid transition-[border-color] duration-500"}
         style={{
           borderLeftColor: `var(${colors[1]})`,
           borderTopColor: `var(${colors[1]})`,
@@ -37,5 +37,7 @@ function Cube({ colors, rotation, className }: Props) {
     </div>
   );
 }
+
+Cube.displayName = "Cube";
 
 export { Cube };

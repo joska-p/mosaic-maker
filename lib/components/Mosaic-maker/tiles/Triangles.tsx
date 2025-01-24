@@ -24,4 +24,6 @@ function Triangles({ colors, rotation, className }: Props) {
   );
 }
 
+Triangles.displayName = "Triangles";
+
 export { Triangles };

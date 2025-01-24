@@ -31,9 +31,9 @@ function Tile({ name, colors, rotation, className }: Props) {
     throw new Error("Tile component requires exactly 5 colors");
   }
 
-  const Component = tileComponents[name];
+  const TileComponent = tileComponents[name];
   return (
-    <Component
+    <TileComponent
       colors={colors}
       rotation={rotation}
       className={cn(
@@ -43,5 +43,7 @@ function Tile({ name, colors, rotation, className }: Props) {
     />
   );
 }
+
+Tile.displayName = "Tile";
 
 export { Tile };
