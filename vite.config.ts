@@ -7,7 +7,7 @@ const ReactCompilerConfig = {
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: "/mosaic-maker",
+  base: "/mosaic-maker/",
   plugins: [
     react({
       babel: {
