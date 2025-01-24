@@ -51,7 +51,7 @@ function Controls() {
           defaultValue={DEFAULT_GAP_SIZE}
           cssVar={CSS_VARS.gap}
           min={0}
-          max={32}
+          max={64}
           step={2}
         />
       </fieldset>
