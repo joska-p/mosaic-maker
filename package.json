@@ -24,6 +24,7 @@
     "prebuild": "rm -rf dist",
     "prepublish": "pnpm run build",
     "build": "vite build",
+    "build:app": "vite build --config vite.config.app.ts",
     "preview": "vite preview",
     "lint": "eslint . --report-unused-disable-directives",
     "lint:inspect": "eslint --inspect-config",
