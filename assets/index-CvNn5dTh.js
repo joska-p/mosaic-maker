@@ -19670,26 +19670,26 @@ const _e = "-", ur = (t) => {
     experimentalParseClassName: o
   } = t, n = e.length === 1, a = e[0], s = e.length, l = (i) => {
     const u = [];
-    let f = 0, m = 0, v;
-    for (let g = 0; g < i.length; g++) {
-      let E = i[g];
+    let f = 0, g = 0, v;
+    for (let m = 0; m < i.length; m++) {
+      let E = i[m];
       if (f === 0) {
-        if (E === a && (n || i.slice(g, g + s) === e)) {
-          u.push(i.slice(m, g)), m = g + s;
+        if (E === a && (n || i.slice(m, m + s) === e)) {
+          u.push(i.slice(g, m)), g = m + s;
           continue;
         }
         if (E === "/") {
-          v = g;
+          v = m;
           continue;
         }
       }
       E === "[" ? f++ : E === "]" && f--;
     }
-    const w = u.length === 0 ? i : i.substring(m), T = w.startsWith(Qe), R = T ? w.substring(1) : w, y = v && v > m ? v - m : void 0;
+    const w = u.length === 0 ? i : i.substring(g), T = w.startsWith(Qe), _ = T ? w.substring(1) : w, y = v && v > g ? v - g : void 0;
     return {
       modifiers: u,
       hasImportantModifier: T,
-      baseClassName: R,
+      baseClassName: _,
       maybePostfixModifierPosition: y
     };
   };
@@ -19718,14 +19718,14 @@ const _e = "-", ur = (t) => {
   let i = "";
   for (let u = l.length - 1; u >= 0; u -= 1) {
     const f = l[u], {
-      modifiers: m,
+      modifiers: g,
       hasImportantModifier: v,
       baseClassName: w,
       maybePostfixModifierPosition: T
     } = o(f);
-    let R = !!T, y = n(R ? w.substring(0, T) : w);
+    let _ = !!T, y = n(_ ? w.substring(0, T) : w);
     if (!y) {
-      if (!R) {
+      if (!_) {
         i = f + (i.length > 0 ? " " + i : i);
         continue;
       }
@@ -19733,13 +19733,13 @@ const _e = "-", ur = (t) => {
         i = f + (i.length > 0 ? " " + i : i);
         continue;
       }
-      R = false;
+      _ = false;
     }
-    const g = vr(m).join(":"), E = v ? g + Qe : g, _ = E + y;
-    if (s.includes(_))
+    const m = vr(g).join(":"), E = v ? m + Qe : m, R = E + y;
+    if (s.includes(R))
       continue;
-    s.push(_);
-    const O = a(y, R);
+    s.push(R);
+    const O = a(y, _);
     for (let N = 0; N < O.length; ++N) {
       const L = O[N];
       s.push(E + L);
@@ -19765,15 +19765,15 @@ const De = (t) => {
 function Cr(t, ...e) {
   let o, n, a, s = l;
   function l(u) {
-    const f = e.reduce((m, v) => v(m), t());
+    const f = e.reduce((g, v) => v(g), t());
     return o = xr(f), n = o.cache.get, a = o.cache.set, s = i, i(u);
   }
   function i(u) {
     const f = n(u);
     if (f)
       return f;
-    const m = wr(u, o);
-    return a(u, m), m;
+    const g = wr(u, o);
+    return a(u, g), g;
   }
   return function() {
     return s(Er.apply(null, arguments));
@@ -19791,7 +19791,7 @@ const C = (t) => {
   // I could also use lookbehind assertion in `lengthUnitRegex` but that isn't supported widely enough.
   Sr.test(t) && !Nr.test(t)
 ), rr = () => false, Ir = (t) => Ar.test(t), Wr = (t) => Tr.test(t), Yr = () => {
-  const t = C("colors"), e = C("spacing"), o = C("blur"), n = C("brightness"), a = C("borderColor"), s = C("borderRadius"), l = C("borderSpacing"), i = C("borderWidth"), u = C("contrast"), f = C("grayscale"), m = C("hueRotate"), v = C("invert"), w = C("gap"), T = C("gradientColorStops"), R = C("gradientColorStopPositions"), y = C("inset"), g = C("margin"), E = C("opacity"), _ = C("padding"), O = C("saturate"), N = C("scale"), L = C("sepia"), G = C("skew"), $ = C("space"), re = C("translate"), B = () => ["auto", "contain", "none"], J = () => ["auto", "hidden", "clip", "visible", "scroll"], q = () => ["auto", p, e], x = () => [p, e], F = () => ["", V, Y], I = () => ["auto", D, p], X = () => ["bottom", "center", "left", "left-bottom", "left-top", "right", "right-bottom", "right-top", "top"], Z = () => ["solid", "dashed", "dotted", "double", "none"], te = () => ["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity"], oe = () => ["start", "end", "center", "between", "around", "evenly", "stretch"], z2 = () => ["", "0", p], ne = () => ["auto", "avoid", "all", "avoid-page", "page", "left", "right", "column"], S = () => [D, p];
+  const t = C("colors"), e = C("spacing"), o = C("blur"), n = C("brightness"), a = C("borderColor"), s = C("borderRadius"), l = C("borderSpacing"), i = C("borderWidth"), u = C("contrast"), f = C("grayscale"), g = C("hueRotate"), v = C("invert"), w = C("gap"), T = C("gradientColorStops"), _ = C("gradientColorStopPositions"), y = C("inset"), m = C("margin"), E = C("opacity"), R = C("padding"), O = C("saturate"), N = C("scale"), L = C("sepia"), G = C("skew"), $ = C("space"), re = C("translate"), B = () => ["auto", "contain", "none"], J = () => ["auto", "hidden", "clip", "visible", "scroll"], q = () => ["auto", p, e], x = () => [p, e], F = () => ["", V, Y], I = () => ["auto", D, p], X = () => ["bottom", "center", "left", "left-bottom", "left-top", "right", "right-bottom", "right-top", "top"], Z = () => ["solid", "dashed", "dotted", "double", "none"], te = () => ["normal", "multiply", "screen", "overlay", "darken", "lighten", "color-dodge", "color-burn", "hard-light", "soft-light", "difference", "exclusion", "hue", "saturation", "color", "luminosity"], oe = () => ["start", "end", "center", "between", "around", "evenly", "stretch"], z2 = () => ["", "0", p], ne = () => ["auto", "avoid", "all", "avoid-page", "page", "left", "right", "column"], S = () => [D, p];
   return {
     cacheSize: 500,
     separator: ":",
@@ -20259,126 +20259,126 @@ const C = (t) => {
        * @see https://tailwindcss.com/docs/padding
        */
       p: [{
-        p: [_]
+        p: [R]
       }],
       /**
        * Padding X
        * @see https://tailwindcss.com/docs/padding
        */
       px: [{
-        px: [_]
+        px: [R]
       }],
       /**
        * Padding Y
        * @see https://tailwindcss.com/docs/padding
        */
       py: [{
-        py: [_]
+        py: [R]
       }],
       /**
        * Padding Start
        * @see https://tailwindcss.com/docs/padding
        */
       ps: [{
-        ps: [_]
+        ps: [R]
       }],
       /**
        * Padding End
        * @see https://tailwindcss.com/docs/padding
        */
       pe: [{
-        pe: [_]
+        pe: [R]
       }],
       /**
        * Padding Top
        * @see https://tailwindcss.com/docs/padding
        */
       pt: [{
-        pt: [_]
+        pt: [R]
       }],
       /**
        * Padding Right
        * @see https://tailwindcss.com/docs/padding
        */
       pr: [{
-        pr: [_]
+        pr: [R]
       }],
       /**
        * Padding Bottom
        * @see https://tailwindcss.com/docs/padding
        */
       pb: [{
-        pb: [_]
+        pb: [R]
       }],
       /**
        * Padding Left
        * @see https://tailwindcss.com/docs/padding
        */
       pl: [{
-        pl: [_]
+        pl: [R]
       }],
       /**
        * Margin
        * @see https://tailwindcss.com/docs/margin
        */
       m: [{
-        m: [g]
+        m: [m]
       }],
       /**
        * Margin X
        * @see https://tailwindcss.com/docs/margin
        */
       mx: [{
-        mx: [g]
+        mx: [m]
       }],
       /**
        * Margin Y
        * @see https://tailwindcss.com/docs/margin
        */
       my: [{
-        my: [g]
+        my: [m]
       }],
       /**
        * Margin Start
        * @see https://tailwindcss.com/docs/margin
        */
       ms: [{
-        ms: [g]
+        ms: [m]
       }],
       /**
        * Margin End
        * @see https://tailwindcss.com/docs/margin
        */
       me: [{
-        me: [g]
+        me: [m]
       }],
       /**
        * Margin Top
        * @see https://tailwindcss.com/docs/margin
        */
       mt: [{
-        mt: [g]
+        mt: [m]
       }],
       /**
        * Margin Right
        * @see https://tailwindcss.com/docs/margin
        */
       mr: [{
-        mr: [g]
+        mr: [m]
       }],
       /**
        * Margin Bottom
        * @see https://tailwindcss.com/docs/margin
        */
       mb: [{
-        mb: [g]
+        mb: [m]
       }],
       /**
        * Margin Left
        * @see https://tailwindcss.com/docs/margin
        */
       ml: [{
-        ml: [g]
+        ml: [m]
       }],
       /**
        * Space Between X
@@ -20762,21 +20762,21 @@ const C = (t) => {
        * @see https://tailwindcss.com/docs/gradient-color-stops
        */
       "gradient-from-pos": [{
-        from: [R]
+        from: [_]
       }],
       /**
        * Gradient Color Stops Via Position
        * @see https://tailwindcss.com/docs/gradient-color-stops
        */
       "gradient-via-pos": [{
-        via: [R]
+        via: [_]
       }],
       /**
        * Gradient Color Stops To Position
        * @see https://tailwindcss.com/docs/gradient-color-stops
        */
       "gradient-to-pos": [{
-        to: [R]
+        to: [_]
       }],
       /**
        * Gradient Color Stops From
@@ -21243,7 +21243,7 @@ const C = (t) => {
        * @see https://tailwindcss.com/docs/hue-rotate
        */
       "hue-rotate": [{
-        "hue-rotate": [m]
+        "hue-rotate": [g]
       }],
       /**
        * Invert
@@ -21307,7 +21307,7 @@ const C = (t) => {
        * @see https://tailwindcss.com/docs/backdrop-hue-rotate
        */
       "backdrop-hue-rotate": [{
-        "backdrop-hue-rotate": [m]
+        "backdrop-hue-rotate": [g]
       }],
       /**
        * Backdrop Invert
@@ -21823,24 +21823,24 @@ const C = (t) => {
   var n;
   if ((e == null ? void 0 : e.variants) == null) return Fe(t, o == null ? void 0 : o.class, o == null ? void 0 : o.className);
   const { variants: a, defaultVariants: s } = e, l = Object.keys(a).map((f) => {
-    const m = o == null ? void 0 : o[f], v = s == null ? void 0 : s[f];
-    if (m === null) return null;
-    const w = Je(m) || Je(v);
+    const g = o == null ? void 0 : o[f], v = s == null ? void 0 : s[f];
+    if (g === null) return null;
+    const w = Je(g) || Je(v);
     return a[f][w];
-  }), i = o && Object.entries(o).reduce((f, m) => {
-    let [v, w] = m;
+  }), i = o && Object.entries(o).reduce((f, g) => {
+    let [v, w] = g;
     return w === void 0 || (f[v] = w), f;
-  }, {}), u = e == null || (n = e.compoundVariants) === null || n === void 0 ? void 0 : n.reduce((f, m) => {
-    let { class: v, className: w, ...T } = m;
-    return Object.entries(T).every((R) => {
-      let [y, g] = R;
-      return Array.isArray(g) ? g.includes({
+  }, {}), u = e == null || (n = e.compoundVariants) === null || n === void 0 ? void 0 : n.reduce((f, g) => {
+    let { class: v, className: w, ...T } = g;
+    return Object.entries(T).every((_) => {
+      let [y, m] = _;
+      return Array.isArray(m) ? m.includes({
         ...s,
         ...i
       }[y]) : {
         ...s,
         ...i
-      }[y] === g;
+      }[y] === m;
     }) ? [
       ...f,
       v,
@@ -21848,12 +21848,12 @@ const C = (t) => {
     ] : f;
   }, []);
   return Fe(t, l, u, o == null ? void 0 : o.class, o == null ? void 0 : o.className);
-}, Lr = me("inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0", {
+}, Lr = me("ring-offset-background focus-visible:ring-ring inline-flex items-center justify-center gap-2 rounded-md text-sm font-medium whitespace-nowrap shadow-md transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0", {
   variants: {
     variant: {
       default: "bg-primary text-primary-foreground hover:bg-primary/90",
       destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-      outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+      outline: "border-input bg-background hover:bg-accent hover:text-accent-foreground border",
       secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
       ghost: "hover:bg-accent hover:text-accent-foreground",
       link: "text-primary underline-offset-4 hover:underline"
@@ -21883,20 +21883,20 @@ function Fr(t) {
     ...a
   } = t, e[0] = t, e[1] = o, e[2] = n, e[3] = a, e[4] = s, e[5] = l, e[6] = i, e[7] = u) : (o = e[1], n = e[2], a = e[3], s = e[4], l = e[5], i = e[6], u = e[7]);
   const f = i === void 0 ? "button" : i;
-  let m;
-  e[8] !== n || e[9] !== l || e[10] !== u ? (m = ge(Lr({
+  let g;
+  e[8] !== n || e[9] !== l || e[10] !== u ? (g = ge(Lr({
     variant: u,
     size: l,
     className: n
-  })), e[8] = n, e[9] = l, e[10] = u, e[11] = m) : m = e[11];
+  })), e[8] = n, e[9] = l, e[10] = u, e[11] = g) : g = e[11];
   let v;
-  return e[12] !== o || e[13] !== a || e[14] !== s || e[15] !== m || e[16] !== f ? (v = /* @__PURE__ */ Q.jsx("button", { className: m, type: f, ref: s, ...a, children: o }), e[12] = o, e[13] = a, e[14] = s, e[15] = m, e[16] = f, e[17] = v) : v = e[17], v;
+  return e[12] !== o || e[13] !== a || e[14] !== s || e[15] !== g || e[16] !== f ? (v = /* @__PURE__ */ Q.jsx("button", { className: g, type: f, ref: s, ...a, children: o }), e[12] = o, e[13] = a, e[14] = s, e[15] = g, e[16] = f, e[17] = v) : v = e[17], v;
 }
-const Br = me("slider my-4 h-2 w-full cursor-pointer appearance-none rounded-lg outline-none focus-visible:ring-2 focus-visible:ring-accent", {
+const Br = me("slider focus-visible:ring-accent my-4 h-2 w-full cursor-pointer appearance-none rounded-lg outline-hidden focus-visible:ring-2", {
   variants: {
     variant: {
       default: "bg-primary text-primary-foreground",
-      outline: "border border-input bg-background",
+      outline: "border-input bg-background border",
       destructive: "bg-destructive text-destructive-foreground",
       secondary: "bg-secondary text-secondary-foreground"
     }
@@ -21915,25 +21915,24 @@ function Kr(t) {
     onChange: i,
     className: u,
     variant: f,
-    label: m,
+    label: g,
     ariaLabel: v
   } = t, [w, T] = reactExports.useState(l);
-  let R;
-  e[0] !== i ? (R = function(G) {
+  let _;
+  e[0] !== i ? (_ = function(G) {
     const $ = parseFloat(G.target.value);
     T($), i($);
-  }, e[0] = i, e[1] = R) : R = e[1];
-  const y = R;
-  let g;
-  e[2] !== u || e[3] !== f ? (g = ge(Br({
+  }, e[0] = i, e[1] = _) : _ = e[1];
+  const y = _, m = g ? `${g}: ${w}` : w;
+  let E;
+  e[2] !== m ? (E = /* @__PURE__ */ Q.jsx("span", { className: "slider-value", children: m }), e[2] = m, e[3] = E) : E = e[3];
+  let R;
+  e[4] !== u || e[5] !== f ? (R = ge(Br({
     variant: f,
     className: u
-  })), e[2] = u, e[3] = f, e[4] = g) : g = e[4];
-  let E;
-  e[5] !== v || e[6] !== y || e[7] !== a || e[8] !== n || e[9] !== w || e[10] !== s || e[11] !== g ? (E = /* @__PURE__ */ Q.jsx("input", { "aria-label": v, ref: o, type: "range", min: n, max: a, step: s, value: w, onChange: y, className: g }), e[5] = v, e[6] = y, e[7] = a, e[8] = n, e[9] = w, e[10] = s, e[11] = g, e[12] = E) : E = e[12];
-  const _ = m ? `${m}: ${w}` : w;
+  })), e[4] = u, e[5] = f, e[6] = R) : R = e[6];
   let O;
-  e[13] !== _ ? (O = /* @__PURE__ */ Q.jsx("span", { className: "slider-value", children: _ }), e[13] = _, e[14] = O) : O = e[14];
+  e[7] !== v || e[8] !== y || e[9] !== a || e[10] !== n || e[11] !== w || e[12] !== s || e[13] !== R ? (O = /* @__PURE__ */ Q.jsx("input", { "aria-label": v, ref: o, type: "range", min: n, max: a, step: s, value: w, onChange: y, className: R }), e[7] = v, e[8] = y, e[9] = a, e[10] = n, e[11] = w, e[12] = s, e[13] = R, e[14] = O) : O = e[14];
   let N;
   return e[15] !== E || e[16] !== O ? (N = /* @__PURE__ */ Q.jsxs("label", { className: "flex cursor-pointer flex-col items-center text-sm md:text-base", children: [
     E,
@@ -21957,7 +21956,7 @@ function PaletteButton(t0) {
   } = useMosaicMakerContext();
   let t1;
   if ($[0] === Symbol.for("react.memo_cache_sentinel")) {
-    t1 = cn("flex w-fit flex-row", "lg:flex-col", "has-[:checked]:ring-4 has-[:checked]:ring-primary", "has-[:focus-visible]:bg-accent has-[:focus-visible]:text-accent-foreground");
+    t1 = cn("flex w-fit flex-row", "lg:flex-col", "has-checked:ring-4 has-checked:ring-primary", "has-focus-visible:bg-accent has-focus-visible:text-accent-foreground");
     $[0] = t1;
   } else {
     t1 = $[0];
@@ -22053,7 +22052,7 @@ function PaletteControls() {
   }
   let t3;
   if ($[4] !== t2) {
-    t3 = /* @__PURE__ */ jsxRuntimeExports.jsxs("fieldset", { className: "flex h-[176px] w-full flex-col flex-wrap justify-center gap-2 overflow-x-auto p-2 has-[:focus-visible]:bg-accent/20 lg:h-auto lg:flex-row lg:gap-4", children: [
+    t3 = /* @__PURE__ */ jsxRuntimeExports.jsxs("fieldset", { className: "flex h-[176px] w-full flex-col flex-wrap justify-center gap-2 overflow-x-auto p-2 has-focus-visible:bg-accent/20 lg:h-auto lg:flex-row lg:gap-4", children: [
       t0,
       t1,
       t2
@@ -22240,7 +22239,7 @@ function Controls() {
   if ($[18] === Symbol.for("react.memo_cache_sentinel")) {
     t7 = /* @__PURE__ */ jsxRuntimeExports.jsxs("fieldset", { className: "grid grid-cols-2 gap-4 px-2", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx(SliderControls, { label: "Tile size", defaultValue: DEFAULT_TILE_SIZE, cssVar: CSS_VARS.width, min: 32, max: 256, step: 2 }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(SliderControls, { label: "Gap size", defaultValue: DEFAULT_GAP_SIZE, cssVar: CSS_VARS.gap, min: 0, max: 32, step: 2 })
+      /* @__PURE__ */ jsxRuntimeExports.jsx(SliderControls, { label: "Gap size", defaultValue: DEFAULT_GAP_SIZE, cssVar: CSS_VARS.gap, min: 0, max: 64, step: 2 })
     ] });
     t8 = /* @__PURE__ */ jsxRuntimeExports.jsx(TileSetControls, {});
     t9 = /* @__PURE__ */ jsxRuntimeExports.jsx(PaletteControls, {});
@@ -22278,7 +22277,7 @@ function MosaicMaker() {
   }
   let t1;
   if ($[1] === Symbol.for("react.memo_cache_sentinel")) {
-    t1 = /* @__PURE__ */ jsxRuntimeExports.jsx(MosaicMakerProvider, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid h-full min-h-screen grid-cols-1 grid-rows-[1fr,auto] lg:grid-cols-[1fr,auto] lg:grid-rows-1", children: [
+    t1 = /* @__PURE__ */ jsxRuntimeExports.jsx(MosaicMakerProvider, { children: /* @__PURE__ */ jsxRuntimeExports.jsxs("div", { className: "grid h-full min-h-screen grid-cols-1 grid-rows-[1fr_auto] lg:grid-cols-[1fr_auto] lg:grid-rows-1", children: [
       t0,
       /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "bg-card", children: /* @__PURE__ */ jsxRuntimeExports.jsx(Controls, {}) })
     ] }) });
@@ -22293,4 +22292,4 @@ if (!root) {
   throw new Error("Root element not found");
 }
 clientExports.createRoot(root).render(/* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(MosaicMaker, {}) }));
-//# sourceMappingURL=index-5zNU89HY.js.map
+//# sourceMappingURL=index-CvNn5dTh.js.map
