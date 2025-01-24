@@ -18847,7 +18847,7 @@ function CornerCircles(t0) {
   if ($[5] !== t5) {
     t6 = /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: {
       backgroundColor: t5
-    }, className: "absolute left-0 top-0 h-1/2 w-1/2 rounded-br-full transition-colors duration-500" });
+    }, className: "absolute top-0 left-0 h-1/2 w-1/2 rounded-br-full transition-colors duration-500" });
     $[5] = t5;
     $[6] = t6;
   } else {
@@ -18858,7 +18858,7 @@ function CornerCircles(t0) {
   if ($[7] !== t7) {
     t8 = /* @__PURE__ */ jsxRuntimeExports.jsx("div", { style: {
       backgroundColor: t7
-    }, className: "absolute bottom-0 right-0 h-1/2 w-1/2 rounded-tl-full transition-colors duration-500" });
+    }, className: "absolute right-0 bottom-0 h-1/2 w-1/2 rounded-tl-full transition-colors duration-500" });
     $[7] = t7;
     $[8] = t8;
   } else {
@@ -18880,6 +18880,7 @@ function CornerCircles(t0) {
   }
   return t9;
 }
+CornerCircles.displayName = "CornerCircles";
 function Cube(t0) {
   const $ = compilerRuntimeExports.c(17);
   const {
@@ -18915,7 +18916,7 @@ function Cube(t0) {
   const t8 = `var(${colors[2]})`;
   let t9;
   if ($[5] !== t5 || $[6] !== t6 || $[7] !== t7 || $[8] !== t8) {
-    t9 = /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute left-0 top-0 border-solid transition-[border-color] duration-500", style: {
+    t9 = /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-0 left-0 border-solid transition-[border-color] duration-500", style: {
       borderLeftColor: t5,
       borderTopColor: t6,
       borderRightColor: t7,
@@ -18959,6 +18960,7 @@ function Cube(t0) {
   }
   return t12;
 }
+Cube.displayName = "Cube";
 function Diamond(t0) {
   const $ = compilerRuntimeExports.c(20);
   const {
@@ -19056,6 +19058,7 @@ function Diamond(t0) {
   }
   return t13;
 }
+Diamond.displayName = "Diamond";
 function MiddleCircle(t0) {
   const $ = compilerRuntimeExports.c(14);
   const {
@@ -19123,6 +19126,7 @@ function MiddleCircle(t0) {
   }
   return t9;
 }
+MiddleCircle.displayName = "MiddleCircle";
 function OppositeCircles(t0) {
   const $ = compilerRuntimeExports.c(14);
   const {
@@ -19190,6 +19194,7 @@ function OppositeCircles(t0) {
   }
   return t9;
 }
+OppositeCircles.displayName = "OppositeCircles";
 const Rainbow = (t0) => {
   const $ = compilerRuntimeExports.c(14);
   const {
@@ -19222,7 +19227,7 @@ const Rainbow = (t0) => {
   const t5 = `var(${colors[1]})`;
   let t6;
   if ($[5] !== t5) {
-    t6 = /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute left-0 top-0 h-full w-full rounded-br-full transition-colors duration-500", style: {
+    t6 = /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-0 left-0 h-full w-full rounded-br-full transition-colors duration-500", style: {
       backgroundColor: t5
     } });
     $[5] = t5;
@@ -19233,7 +19238,7 @@ const Rainbow = (t0) => {
   const t7 = `var(${colors[2]})`;
   let t8;
   if ($[7] !== t7) {
-    t8 = /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute left-0 top-0 h-1/2 w-1/2 rounded-br-full transition-colors duration-500", style: {
+    t8 = /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "absolute top-0 left-0 h-1/2 w-1/2 rounded-br-full transition-colors duration-500", style: {
       backgroundColor: t7
     } });
     $[7] = t7;
@@ -19257,6 +19262,7 @@ const Rainbow = (t0) => {
   }
   return t9;
 };
+Rainbow.displayName = "Rainbow";
 function Square(t0) {
   const $ = compilerRuntimeExports.c(19);
   const {
@@ -19348,6 +19354,7 @@ function Square(t0) {
   }
   return t12;
 }
+Square.displayName = "Square";
 function Triangles(t0) {
   const $ = compilerRuntimeExports.c(11);
   const {
@@ -19399,6 +19406,7 @@ function Triangles(t0) {
   }
   return t8;
 }
+Triangles.displayName = "Triangles";
 const tileComponents = {
   [CornerCircles.name]: CornerCircles,
   [Diamond.name]: Diamond,
@@ -19420,7 +19428,7 @@ function Tile(t0) {
   if (colors.length < 5) {
     throw new Error("Tile component requires exactly 5 colors");
   }
-  const Component = tileComponents[name];
+  const TileComponent = tileComponents[name];
   let t1;
   if ($[0] !== className) {
     t1 = cn("relative h-[var(--tile-size)] w-[var(--tile-size)] overflow-hidden", className);
@@ -19430,9 +19438,9 @@ function Tile(t0) {
     t1 = $[1];
   }
   let t2;
-  if ($[2] !== Component || $[3] !== colors || $[4] !== rotation || $[5] !== t1) {
-    t2 = /* @__PURE__ */ jsxRuntimeExports.jsx(Component, { colors, rotation, className: t1 });
-    $[2] = Component;
+  if ($[2] !== TileComponent || $[3] !== colors || $[4] !== rotation || $[5] !== t1) {
+    t2 = /* @__PURE__ */ jsxRuntimeExports.jsx(TileComponent, { colors, rotation, className: t1 });
+    $[2] = TileComponent;
     $[3] = colors;
     $[4] = rotation;
     $[5] = t1;
@@ -19442,6 +19450,7 @@ function Tile(t0) {
   }
   return t2;
 }
+Tile.displayName = "Tile";
 const MOSAIC_STYLES = {
   ...initialPalette,
   ...initialTileSize,
@@ -22292,4 +22301,4 @@ if (!root) {
   throw new Error("Root element not found");
 }
 clientExports.createRoot(root).render(/* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(MosaicMaker, {}) }));
-//# sourceMappingURL=index-CvNn5dTh.js.map
+//# sourceMappingURL=index-BXR9B7O4.js.map
