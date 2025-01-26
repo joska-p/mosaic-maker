@@ -8,7 +8,8 @@ import { SliderControls } from "./Slider-controls.tsx";
 import { TileSetControls } from "./Tile-set-controls.tsx";
 
 function Controls() {
-  const { mosaicRef, currentPalette, updatePalettes, updateTiles } = useMosaicMakerContext();
+  const { mosaicRef, currentPalette, updateCurrentPalettesIndex, updateTiles } =
+    useMosaicMakerContext();
 
   function shuffleColors() {
     if (!mosaicRef.current) return;
@@ -29,7 +30,7 @@ function Controls() {
         <Button type="button" onClick={() => shuffleRotations()} size="sm">
           Shuffle rotations
         </Button>
-        <Button type="button" onClick={() => updatePalettes()} size="sm">
+        <Button type="button" onClick={() => updateCurrentPalettesIndex()} size="sm">
           New palettes
         </Button>
         <Button type="button" onClick={() => updateTiles()} size="sm">

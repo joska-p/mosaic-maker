@@ -1,15 +1,23 @@
 import type { ComponentProps } from "react";
-import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import type { TileSet, Palette, TileNames } from "./config";
-import { initialPalette, initialTileSet, MAX_RANDOM_PALETTES } from "./config";
+import { initialPalette, initialTileSet, MAX_NUMBER_OF_PALETTES } from "./config";
 import { fetchPalettes } from "./lib/fetch-palettes";
 import { computeNumberOfTiles, updateElementStyles } from "./lib/style-utils";
-import { getRandom, shuffleArray } from "./lib/utils";
+import { getRandom } from "./lib/utils";
 
 interface MosaicContext {
   mosaicRef: React.RefObject<HTMLDivElement | null>;
   currentPalettes: Palette[];
-  updatePalettes: () => void;
+  updateCurrentPalettesIndex: () => void;
   currentPalette: Palette;
   updatePalette: (palette: Palette) => void;
   tileSet: TileSet;
@@ -23,36 +31,40 @@ const MosaicMakerContext = createContext<MosaicContext | null>(null);
 function MosaicMakerProvider({ children }: ComponentProps<"div">) {
   const mosaicRef = useRef<HTMLDivElement>(null);
   const [paletteStock, setPaletteStock] = useState<Palette[]>([initialPalette]);
-  const [currentPalettes, setCurrentPalettes] = useState<Palette[]>([initialPalette]);
+  const [currentPalettesIndex, setCurrentPalettesIndex] = useState<number>(0);
   const [currentPalette, setCurrentPalette] = useState<Palette>(initialPalette);
   const [tileSet, setTileSet] = useState<TileSet>([...initialTileSet]);
   const [tiles, setTiles] = useState<TileSet>([]);
 
-  async function updatePalettesStock() {
-    const palettes = await fetchPalettes();
-    setPaletteStock(palettes);
-  }
+  const currentPalettes = useMemo(() => {
+    return paletteStock.slice(currentPalettesIndex, currentPalettesIndex + MAX_NUMBER_OF_PALETTES);
+  }, [currentPalettesIndex, paletteStock]);
 
-  const updatePalettes = useCallback(() => {
-    setCurrentPalettes(shuffleArray(paletteStock).slice(0, MAX_RANDOM_PALETTES));
+  const updateCurrentPalettesIndex = useCallback(() => {
+    setCurrentPalettesIndex((prev) =>
+      prev === paletteStock.length - MAX_NUMBER_OF_PALETTES ? 0 : prev + MAX_NUMBER_OF_PALETTES
+    );
   }, [paletteStock]);
 
-  function updatePalette(palette: Palette) {
+  const updatePalette = useCallback((palette: Palette) => {
     if (!mosaicRef.current) return;
     setCurrentPalette(palette);
     updateElementStyles(mosaicRef.current, palette);
-  }
+  }, []);
 
-  function updateTileSet(tileName: TileNames) {
-    // if this is the only tile in the set, don't remove it
-    if (tileSet.length === 1 && tileName === tileSet[0]) return;
+  const updateTileSet = useCallback(
+    (tileName: TileNames) => {
+      // if this is the only tile in the set, don't remove it
+      if (tileSet.length === 1 && tileName === tileSet[0]) return;
 
-    if (tileSet.includes(tileName)) {
-      setTileSet((prev) => prev.filter((tile) => tile !== tileName));
-    } else {
-      setTileSet((prev) => [...prev, tileName]);
-    }
-  }
+      if (tileSet.includes(tileName)) {
+        setTileSet((prev) => prev.filter((tile) => tile !== tileName));
+      } else {
+        setTileSet((prev) => [...prev, tileName]);
+      }
+    },
+    [tileSet]
+  );
 
   const updateTiles = useCallback(
     (newTileSet = tileSet) => {
@@ -64,24 +76,22 @@ function MosaicMakerProvider({ children }: ComponentProps<"div">) {
     [tileSet]
   );
 
-  useEffect(() => {
-    updatePalettesStock();
-  }, []);
-
-  useEffect(() => {
-    updatePalettes();
-  }, [updatePalettes]);
-
-  useEffect(() => {
+  const init = useCallback(async () => {
+    const palettes = await fetchPalettes();
+    setPaletteStock(palettes);
     updateTiles();
   }, [updateTiles]);
+
+  useEffect(() => {
+    init();
+  }, [init]);
 
   return (
     <MosaicMakerContext
       value={{
         mosaicRef,
         currentPalettes,
-        updatePalettes,
+        updateCurrentPalettesIndex,
         currentPalette,
         updatePalette,
         tileSet,
