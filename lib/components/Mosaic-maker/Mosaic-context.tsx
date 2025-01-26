@@ -42,7 +42,7 @@ function MosaicMakerProvider({ children }: ComponentProps<"div">) {
 
   const updateCurrentPalettesIndex = useCallback(() => {
     setCurrentPalettesIndex((prev) =>
-      prev === paletteStock.length - MAX_NUMBER_OF_PALETTES ? 0 : prev + MAX_NUMBER_OF_PALETTES
+      prev >= paletteStock.length - MAX_NUMBER_OF_PALETTES ? 0 : prev + MAX_NUMBER_OF_PALETTES
     );
   }, [paletteStock]);
 
