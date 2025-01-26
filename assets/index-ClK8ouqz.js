@@ -530,7 +530,7 @@ function requireReact() {
   return react.exports;
 }
 var reactExports = requireReact();
-const Re = /* @__PURE__ */ getDefaultExportFromCjs(reactExports);
+const React = /* @__PURE__ */ getDefaultExportFromCjs(reactExports);
 var client = { exports: {} };
 var reactDomClient_production = {};
 var scheduler = { exports: {} };
@@ -832,7 +832,7 @@ var hasRequiredReactDom_production;
 function requireReactDom_production() {
   if (hasRequiredReactDom_production) return reactDom_production;
   hasRequiredReactDom_production = 1;
-  var React = requireReact();
+  var React2 = requireReact();
   function formatProdErrorMessage(code) {
     var url = "https://react.dev/errors/" + code;
     if (1 < arguments.length) {
@@ -871,7 +871,7 @@ function requireReactDom_production() {
       implementation
     };
   }
-  var ReactSharedInternals = React.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+  var ReactSharedInternals = React2.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
   function getCrossOriginStringAs(as, input) {
     if ("font" === as) return "";
     if ("string" === typeof input)
@@ -1008,7 +1008,7 @@ var hasRequiredReactDomClient_production;
 function requireReactDomClient_production() {
   if (hasRequiredReactDomClient_production) return reactDomClient_production;
   hasRequiredReactDomClient_production = 1;
-  var Scheduler = requireScheduler(), React = requireReact(), ReactDOM = requireReactDom();
+  var Scheduler = requireScheduler(), React2 = requireReact(), ReactDOM = requireReactDom();
   function formatProdErrorMessage(code) {
     var url = "https://react.dev/errors/" + code;
     if (1 < arguments.length) {
@@ -1072,7 +1072,7 @@ function requireReactDomClient_production() {
       }
     return null;
   }
-  var ReactSharedInternals = React.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, assign = Object.assign, prefix, suffix;
+  var ReactSharedInternals = React2.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE, assign = Object.assign, prefix, suffix;
   function describeBuiltInComponentFrame(name) {
     if (void 0 === prefix)
       try {
@@ -11817,7 +11817,7 @@ function requireReactDomClient_production() {
       0 === i && attemptExplicitHydrationTarget(target);
     }
   };
-  var isomorphicReactPackageVersion$jscomp$inline_1686 = React.version;
+  var isomorphicReactPackageVersion$jscomp$inline_1686 = React2.version;
   if ("19.0.0" !== isomorphicReactPackageVersion$jscomp$inline_1686)
     throw Error(
       formatProdErrorMessage(
@@ -19526,7 +19526,7 @@ var Ue;
 function lr() {
   if (Ue) return we;
   Ue = 1;
-  var t = Re.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
+  var t = React.__CLIENT_INTERNALS_DO_NOT_USE_OR_WARN_USERS_THEY_CANNOT_UPGRADE;
   return we.c = function(e) {
     return t.H.useMemoCache(e);
   }, we;
@@ -21943,7 +21943,7 @@ function PaletteButton(t0) {
   } = useMosaicMakerContext();
   let t1;
   if ($[0] === Symbol.for("react.memo_cache_sentinel")) {
-    t1 = cn("flex w-fit flex-row", "lg:flex-col", "has-checked:ring-4 has-checked:ring-primary", "has-focus-visible:bg-accent has-focus-visible:text-accent-foreground");
+    t1 = cn("flex w-fit flex-row", "lg:flex-col", "has-checked:ring-primary has-checked:ring-4", "has-focus-visible:bg-accent has-focus-visible:text-accent-foreground");
     $[0] = t1;
   } else {
     t1 = $[0];
@@ -22117,7 +22117,7 @@ function TileSetControls() {
   if ($[1] !== tileSet || $[2] !== updateTileSet) {
     t1 = initialTileSet.map((tileName) => /* @__PURE__ */ jsxRuntimeExports.jsxs("label", { "aria-label": tileName, className: "flex flex-col gap-2", children: [
       /* @__PURE__ */ jsxRuntimeExports.jsx("input", { type: "checkbox", checked: tileSet.includes(tileName), onChange: () => updateTileSet(tileName), className: "peer sr-only" }),
-      /* @__PURE__ */ jsxRuntimeExports.jsx(Tile, { name: tileName, colors: Object.keys(initialPalette), className: cn("opacity-70 transition-opacity", "peer-checked:opacity-100 peer-checked:ring-4 peer-checked:ring-primary", "peer-focus-visible:ring-4 peer-focus-visible:ring-accent"), rotation: "--rotation-0" })
+      /* @__PURE__ */ jsxRuntimeExports.jsx(Tile, { name: tileName, colors: Object.keys(initialPalette), className: cn("opacity-70 transition-opacity", "peer-checked:ring-primary peer-checked:opacity-100 peer-checked:ring-4", "peer-focus-visible:ring-accent peer-focus-visible:ring-4"), rotation: "--rotation-0" })
     ] }, tileName));
     $[1] = tileSet;
     $[2] = updateTileSet;
@@ -22278,5 +22278,5 @@ const root = document.getElementById("root");
 if (!root) {
   throw new Error("Root element not found");
 }
-clientExports.createRoot(root).render(/* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(MosaicMaker, {}) }));
-//# sourceMappingURL=index-TfqchrM1.js.map
+clientExports.createRoot(root).render(/* @__PURE__ */ jsxRuntimeExports.jsx(React.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(MosaicMaker, {}) }));
+//# sourceMappingURL=index-ClK8ouqz.js.map
