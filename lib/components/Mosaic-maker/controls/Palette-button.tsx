@@ -15,7 +15,7 @@ function PaletteButton({ palette }: Props) {
       className={cn(
         "flex w-fit flex-row",
         "lg:flex-col",
-        "has-checked:ring-4 has-checked:ring-primary",
+        "has-checked:ring-primary has-checked:ring-4",
         "has-focus-visible:bg-accent has-focus-visible:text-accent-foreground"
       )}
     >

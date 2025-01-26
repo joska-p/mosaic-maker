@@ -1,4 +1,4 @@
-import { StrictMode } from "react";
+import React from "react";
 import { createRoot } from "react-dom/client";
 import { MosaicMaker } from "../lib/components/Mosaic-maker/Mosaic-maker";
 
@@ -8,7 +8,7 @@ if (!root) {
 }
 
 createRoot(root).render(
-  <StrictMode>
+  <React.StrictMode>
     <MosaicMaker />
-  </StrictMode>
+  </React.StrictMode>
 );
