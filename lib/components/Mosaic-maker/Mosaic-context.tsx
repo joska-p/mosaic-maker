@@ -17,7 +17,7 @@ import { getRandom } from "./lib/utils";
 interface MosaicContext {
   mosaicRef: React.RefObject<HTMLDivElement | null>;
   currentPalettes: Palette[];
-  updateCurrentPalettesIndex: () => void;
+  updateCurrentPalettes: () => void;
   currentPalette: Palette;
   updatePalette: (palette: Palette) => void;
   tileSet: TileSet;
@@ -30,7 +30,7 @@ const MosaicMakerContext = createContext<MosaicContext | null>(null);
 
 function MosaicMakerProvider({ children }: ComponentProps<"div">) {
   const mosaicRef = useRef<HTMLDivElement>(null);
-  const [paletteStock, setPaletteStock] = useState<Palette[]>([initialPalette]);
+  const [paletteStock, setPaletteStock] = useState<Palette[]>([]);
   const [currentPalettesIndex, setCurrentPalettesIndex] = useState<number>(0);
   const [currentPalette, setCurrentPalette] = useState<Palette>(initialPalette);
   const [tileSet, setTileSet] = useState<TileSet>([...initialTileSet]);
@@ -40,15 +40,15 @@ function MosaicMakerProvider({ children }: ComponentProps<"div">) {
     return paletteStock.slice(currentPalettesIndex, currentPalettesIndex + MAX_NUMBER_OF_PALETTES);
   }, [currentPalettesIndex, paletteStock]);
 
-  const updateCurrentPalettesIndex = useCallback(() => {
+  const updateCurrentPalettes = useCallback(() => {
     setCurrentPalettesIndex((prev) =>
       prev >= paletteStock.length - MAX_NUMBER_OF_PALETTES ? 0 : prev + MAX_NUMBER_OF_PALETTES
     );
   }, [paletteStock]);
 
   const updatePalette = useCallback((palette: Palette) => {
-    if (!mosaicRef.current) return;
     setCurrentPalette(palette);
+    if (!mosaicRef.current) return;
     updateElementStyles(mosaicRef.current, palette);
   }, []);
 
@@ -91,7 +91,7 @@ function MosaicMakerProvider({ children }: ComponentProps<"div">) {
       value={{
         mosaicRef,
         currentPalettes,
-        updateCurrentPalettesIndex,
+        updateCurrentPalettes,
         currentPalette,
         updatePalette,
         tileSet,
