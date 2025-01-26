@@ -11972,7 +11972,7 @@ const CSS_VARS = {
   height: "--tile-size",
   gap: "--mosaicGap"
 };
-const MAX_RANDOM_PALETTES = 39;
+const MAX_NUMBER_OF_PALETTES = 39;
 const DEFAULT_TILE_SIZE = 64;
 const DEFAULT_GAP_SIZE = 0;
 const defaultTileSize = {
@@ -18616,7 +18616,7 @@ function updateElementStyles(element, styles) {
 }
 const MosaicMakerContext = reactExports.createContext(null);
 function MosaicMakerProvider(t0) {
-  const $ = compilerRuntimeExports.c(31);
+  const $ = compilerRuntimeExports.c(29);
   const {
     children
   } = t0;
@@ -18629,87 +18629,81 @@ function MosaicMakerProvider(t0) {
     t1 = $[0];
   }
   const [paletteStock, setPaletteStock] = reactExports.useState(t1);
+  const [currentPalettesIndex, setCurrentPalettesIndex] = reactExports.useState(0);
+  const [currentPalette, setCurrentPalette] = reactExports.useState(initialPalette);
   let t2;
   if ($[1] === Symbol.for("react.memo_cache_sentinel")) {
-    t2 = [initialPalette];
+    t2 = [...initialTileSet];
     $[1] = t2;
   } else {
     t2 = $[1];
   }
-  const [currentPalettes, setCurrentPalettes] = reactExports.useState(t2);
-  const [currentPalette, setCurrentPalette] = reactExports.useState(initialPalette);
+  const [tileSet, setTileSet] = reactExports.useState(t2);
   let t3;
   if ($[2] === Symbol.for("react.memo_cache_sentinel")) {
-    t3 = [...initialTileSet];
+    t3 = [];
     $[2] = t3;
   } else {
     t3 = $[2];
   }
-  const [tileSet, setTileSet] = reactExports.useState(t3);
+  const [tiles, setTiles] = reactExports.useState(t3);
   let t4;
-  if ($[3] === Symbol.for("react.memo_cache_sentinel")) {
-    t4 = [];
-    $[3] = t4;
-  } else {
-    t4 = $[3];
-  }
-  const [tiles, setTiles] = reactExports.useState(t4);
   let t5;
-  if ($[4] === Symbol.for("react.memo_cache_sentinel")) {
-    t5 = async function updatePalettesStock2() {
-      const palettes = await fetchPalettes();
-      setPaletteStock(palettes);
-    };
-    $[4] = t5;
+  if ($[3] !== currentPalettesIndex || $[4] !== paletteStock) {
+    t5 = paletteStock.slice(currentPalettesIndex, currentPalettesIndex + MAX_NUMBER_OF_PALETTES);
+    $[3] = currentPalettesIndex;
+    $[4] = paletteStock;
+    $[5] = t5;
   } else {
-    t5 = $[4];
+    t5 = $[5];
   }
-  const updatePalettesStock = t5;
+  t4 = t5;
+  const currentPalettes = t4;
   let t6;
-  if ($[5] !== paletteStock) {
+  if ($[6] !== paletteStock.length) {
     t6 = () => {
-      setCurrentPalettes(shuffleArray(paletteStock).slice(0, MAX_RANDOM_PALETTES));
+      setCurrentPalettesIndex((prev) => prev === paletteStock.length - MAX_NUMBER_OF_PALETTES ? 0 : prev + MAX_NUMBER_OF_PALETTES);
     };
-    $[5] = paletteStock;
-    $[6] = t6;
+    $[6] = paletteStock.length;
+    $[7] = t6;
   } else {
-    t6 = $[6];
+    t6 = $[7];
   }
-  const updatePalettes = t6;
+  const updateCurrentPalettesIndex = t6;
   let t7;
-  if ($[7] === Symbol.for("react.memo_cache_sentinel")) {
-    t7 = function updatePalette2(palette) {
+  if ($[8] === Symbol.for("react.memo_cache_sentinel")) {
+    t7 = (palette) => {
       if (!mosaicRef.current) {
         return;
       }
       setCurrentPalette(palette);
       updateElementStyles(mosaicRef.current, palette);
     };
-    $[7] = t7;
+    $[8] = t7;
   } else {
-    t7 = $[7];
+    t7 = $[8];
   }
   const updatePalette = t7;
   let t8;
-  if ($[8] !== tileSet) {
-    t8 = function updateTileSet2(tileName) {
+  if ($[9] !== tileSet) {
+    t8 = (tileName) => {
       if (tileSet.length === 1 && tileName === tileSet[0]) {
         return;
       }
       if (tileSet.includes(tileName)) {
-        setTileSet((prev) => prev.filter((tile) => tile !== tileName));
+        setTileSet((prev_0) => prev_0.filter((tile) => tile !== tileName));
       } else {
-        setTileSet((prev_0) => [...prev_0, tileName]);
+        setTileSet((prev_1) => [...prev_1, tileName]);
       }
     };
-    $[8] = tileSet;
-    $[9] = t8;
+    $[9] = tileSet;
+    $[10] = t8;
   } else {
-    t8 = $[9];
+    t8 = $[10];
   }
   const updateTileSet = t8;
   let t9;
-  if ($[10] !== tileSet) {
+  if ($[11] !== tileSet) {
     t9 = (t102) => {
       const newTileSet = t102 === void 0 ? tileSet : t102;
       if (!mosaicRef.current) {
@@ -18721,62 +18715,46 @@ function MosaicMakerProvider(t0) {
       }, () => getRandom(newTileSet));
       setTiles(newTiles);
     };
-    $[10] = tileSet;
-    $[11] = t9;
+    $[11] = tileSet;
+    $[12] = t9;
   } else {
-    t9 = $[11];
+    t9 = $[12];
   }
   const updateTiles = t9;
   let t10;
-  let t11;
-  if ($[12] === Symbol.for("react.memo_cache_sentinel")) {
-    t10 = () => {
-      updatePalettesStock();
-    };
-    t11 = [];
-    $[12] = t10;
-    $[13] = t11;
-  } else {
-    t10 = $[12];
-    t11 = $[13];
-  }
-  reactExports.useEffect(t10, t11);
-  let t12;
-  let t13;
-  if ($[14] !== updatePalettes) {
-    t12 = () => {
-      updatePalettes();
-    };
-    t13 = [updatePalettes];
-    $[14] = updatePalettes;
-    $[15] = t12;
-    $[16] = t13;
-  } else {
-    t12 = $[15];
-    t13 = $[16];
-  }
-  reactExports.useEffect(t12, t13);
-  let t14;
-  let t15;
-  if ($[17] !== updateTiles) {
-    t14 = () => {
+  if ($[13] !== updateTiles) {
+    t10 = async () => {
+      const palettes = await fetchPalettes();
+      setPaletteStock(palettes);
       updateTiles();
     };
-    t15 = [updateTiles];
-    $[17] = updateTiles;
-    $[18] = t14;
-    $[19] = t15;
+    $[13] = updateTiles;
+    $[14] = t10;
   } else {
-    t14 = $[18];
-    t15 = $[19];
+    t10 = $[14];
   }
-  reactExports.useEffect(t14, t15);
-  let t16;
-  if ($[20] !== currentPalette || $[21] !== currentPalettes || $[22] !== tileSet || $[23] !== tiles || $[24] !== updatePalettes || $[25] !== updateTileSet || $[26] !== updateTiles) {
-    t16 = {
+  const init = t10;
+  let t11;
+  let t12;
+  if ($[15] !== init) {
+    t11 = () => {
+      init();
+    };
+    t12 = [init];
+    $[15] = init;
+    $[16] = t11;
+    $[17] = t12;
+  } else {
+    t11 = $[16];
+    t12 = $[17];
+  }
+  reactExports.useEffect(t11, t12);
+  let t13;
+  if ($[18] !== currentPalette || $[19] !== currentPalettes || $[20] !== tileSet || $[21] !== tiles || $[22] !== updateCurrentPalettesIndex || $[23] !== updateTileSet || $[24] !== updateTiles) {
+    t13 = {
       mosaicRef,
       currentPalettes,
-      updatePalettes,
+      updateCurrentPalettesIndex,
       currentPalette,
       updatePalette,
       tileSet,
@@ -18784,27 +18762,27 @@ function MosaicMakerProvider(t0) {
       tiles,
       updateTiles
     };
-    $[20] = currentPalette;
-    $[21] = currentPalettes;
-    $[22] = tileSet;
-    $[23] = tiles;
-    $[24] = updatePalettes;
-    $[25] = updateTileSet;
-    $[26] = updateTiles;
-    $[27] = t16;
+    $[18] = currentPalette;
+    $[19] = currentPalettes;
+    $[20] = tileSet;
+    $[21] = tiles;
+    $[22] = updateCurrentPalettesIndex;
+    $[23] = updateTileSet;
+    $[24] = updateTiles;
+    $[25] = t13;
   } else {
-    t16 = $[27];
+    t13 = $[25];
   }
-  let t17;
-  if ($[28] !== children || $[29] !== t16) {
-    t17 = /* @__PURE__ */ jsxRuntimeExports.jsx(MosaicMakerContext, { value: t16, children });
-    $[28] = children;
-    $[29] = t16;
-    $[30] = t17;
+  let t14;
+  if ($[26] !== children || $[27] !== t13) {
+    t14 = /* @__PURE__ */ jsxRuntimeExports.jsx(MosaicMakerContext, { value: t13, children });
+    $[26] = children;
+    $[27] = t13;
+    $[28] = t14;
   } else {
-    t17 = $[30];
+    t14 = $[28];
   }
-  return t17;
+  return t14;
 }
 function useMosaicMakerContext() {
   const context = reactExports.useContext(MosaicMakerContext);
@@ -22061,7 +22039,7 @@ function PaletteControls() {
   }
   let t3;
   if ($[4] !== t2) {
-    t3 = /* @__PURE__ */ jsxRuntimeExports.jsxs("fieldset", { className: "flex h-[176px] w-full flex-col flex-wrap justify-center gap-2 overflow-x-auto p-2 has-focus-visible:bg-accent/20 lg:h-auto lg:flex-row lg:gap-4", children: [
+    t3 = /* @__PURE__ */ jsxRuntimeExports.jsxs("fieldset", { className: "has-focus-visible:bg-accent/20 flex h-[176px] w-full flex-col flex-wrap justify-center gap-2 overflow-x-auto p-2 lg:h-auto lg:flex-row lg:gap-4", children: [
       t0,
       t1,
       t2
@@ -22162,7 +22140,7 @@ function Controls() {
   const {
     mosaicRef,
     currentPalette,
-    updatePalettes,
+    updateCurrentPalettesIndex,
     updateTiles
   } = useMosaicMakerContext();
   let t0;
@@ -22211,9 +22189,9 @@ function Controls() {
     t3 = $[8];
   }
   let t4;
-  if ($[9] !== updatePalettes) {
-    t4 = /* @__PURE__ */ jsxRuntimeExports.jsx(Fr, { type: "button", onClick: () => updatePalettes(), size: "sm", children: "New palettes" });
-    $[9] = updatePalettes;
+  if ($[9] !== updateCurrentPalettesIndex) {
+    t4 = /* @__PURE__ */ jsxRuntimeExports.jsx(Fr, { type: "button", onClick: () => updateCurrentPalettesIndex(), size: "sm", children: "New palettes" });
+    $[9] = updateCurrentPalettesIndex;
     $[10] = t4;
   } else {
     t4 = $[10];
@@ -22301,4 +22279,4 @@ if (!root) {
   throw new Error("Root element not found");
 }
 clientExports.createRoot(root).render(/* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(MosaicMaker, {}) }));
-//# sourceMappingURL=index-BXR9B7O4.js.map
+//# sourceMappingURL=index-DFdIBvPh.js.map
