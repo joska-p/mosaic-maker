@@ -1,7 +1,7 @@
 {
   "name": "@jpotin/mosaic-maker",
   "homepage": "https://github.com/joska-p/mosaic-maker",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A React component for creating mosaics",
   "author": "jpotin@gmail.com",
   "license": "MIT",
