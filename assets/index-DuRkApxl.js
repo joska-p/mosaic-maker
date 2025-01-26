@@ -18662,7 +18662,7 @@ function MosaicMakerProvider(t0) {
   let t6;
   if ($[6] !== paletteStock.length) {
     t6 = () => {
-      setCurrentPalettesIndex((prev) => prev === paletteStock.length - MAX_NUMBER_OF_PALETTES ? 0 : prev + MAX_NUMBER_OF_PALETTES);
+      setCurrentPalettesIndex((prev) => prev >= paletteStock.length - MAX_NUMBER_OF_PALETTES ? 0 : prev + MAX_NUMBER_OF_PALETTES);
     };
     $[6] = paletteStock.length;
     $[7] = t6;
@@ -22279,4 +22279,4 @@ if (!root) {
   throw new Error("Root element not found");
 }
 clientExports.createRoot(root).render(/* @__PURE__ */ jsxRuntimeExports.jsx(reactExports.StrictMode, { children: /* @__PURE__ */ jsxRuntimeExports.jsx(MosaicMaker, {}) }));
-//# sourceMappingURL=index-DFdIBvPh.js.map
+//# sourceMappingURL=index-DuRkApxl.js.map
