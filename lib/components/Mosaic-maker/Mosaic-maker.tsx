@@ -1,7 +1,7 @@
 import { MosaicMakerProvider } from "./Mosaic-context";
 import { MosaicDisplay } from "./Mosaic-display";
 import { Controls } from "./controls/Controls";
-import "../../tailwind.css";
+import "../../styles.css";
 
 function MosaicMaker() {
   return (

@@ -1,7 +1,5 @@
+@import "@jpotin/playground-ui/dist/playground-ui.css";
 @import "tailwindcss";
-@source "@jpotin/playground-ui";
-
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme {
   --color-border: hsl(var(--border));
@@ -93,25 +91,5 @@
     --destructive-foreground: 195 6% 12%;
 
     --radius: 0.5rem;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-
-@layer components {
-  .slider::-webkit-slider-thumb,
-  .slider::-moz-range-thumb {
-    @apply bg-primary outline-primary ring-background h-4 w-4 rounded-full ring-2 outline-2 outline-offset-2;
-  }
-}
-
-@layer utilities {
-  .grid-stack {
-    @apply grid [grid-template-areas:'stack'];
-  }
-  .grid-stack > * {
-    @apply [grid-area:stack];
   }
 }
